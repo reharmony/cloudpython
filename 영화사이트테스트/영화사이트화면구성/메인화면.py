@@ -66,6 +66,8 @@ def recall():
     boxofficesubtitle = Label(w, text="1\t영화제목\t\t누적관객수", font=("굴림", 15), fg="black", bg="white") # 레이블 정의 (부모 윈도우, 출력할 텍스트, 속성값)
     boxofficesubtitle.place(x=1000, y=250)
     
+    
+    
     w.mainloop()
 
 if __name__ == '__main__':
