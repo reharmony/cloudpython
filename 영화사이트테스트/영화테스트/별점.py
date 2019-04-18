@@ -6,18 +6,18 @@ html = response.text
 
 from bs4 import BeautifulSoup    
 soup = BeautifulSoup(html, 'html.parser') #html.parser를 사용해서 soup에 넣겠다
+body = soup.body
 
+tag2=[]
+for tag in soup.select('a > span.num'):
+    tag2.append(tag.text.strip())
 
-tag_list=[]
-for tag in soup.select('span[class="num"]'):
-    tag2 = tag
-    tag_list.append(tag2)
+star=[]   
+for i in range(0,31):
+    star.append(tag2[i])
 
-print(tag.list)
-tag_split=[]
-title=[]
-age=[]
-
+# 별점
+print(star)
 
 
 

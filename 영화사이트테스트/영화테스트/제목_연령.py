@@ -17,13 +17,13 @@ tag_split=[]
 title=[]
 age=[]
 
-for i in range(0,11):
+for i in range(0,31):
     tag_split.append(tag_list[i].splitlines())    
 
 print("----")
-for i in range(0,11):
+for i in range(0,31):
     title.append(tag_split[i][1])
-for i in range(0,11):
+for i in range(0,31):
     age.append(tag_split[i][0])   
 print("----")
 

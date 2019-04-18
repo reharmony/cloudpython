@@ -6,14 +6,17 @@ html = response.text
 
 from bs4 import BeautifulSoup    
 soup = BeautifulSoup(html, 'html.parser') #html.parser를 사용해서 soup에 넣겠다
+body = soup.body
 
-# 연령제한
-for tag in soup.select('dl[class="lst_dsc"]'):
-    print(tag.text.strip())
 
-tag2 = tag.text.strip()
-print(tag2)
+tag2=[]
+for tag in soup.select('div>span.num'):
+    tag2.append(tag.text.strip())
 
-c_lst = [x for x in tag2 if x]
-print(c_lst)
+reserve=[]   
+for i in range(0,31):
+    reserve.append(tag2[i])
+
+# 예매율
+print(reserve)
 
