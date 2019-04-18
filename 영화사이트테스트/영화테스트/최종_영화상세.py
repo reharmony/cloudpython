@@ -12,6 +12,7 @@ def moviedetail():
     outfile.write(codelist)
     outfile.close()
     
+    detail=[]
     
     for i in range(0,10):
     
@@ -39,8 +40,7 @@ def moviedetail():
          
         # 그중에서 'dailyBoxOfficeList'에 속한 값 가져오기
         data3 = data2['movieInfo']
-         
-         
+      
         # 필요한 키 값만 추출하기 (순위, 영화명, 개봉일, 누적관객수)
         data4.append(data3['movieCd'])
         data4.append(data3['movieNmEn'])
@@ -48,7 +48,7 @@ def moviedetail():
         # data4 += "," + data3['genreNm']
         # data4 += "," + data3['directors']
         # data4 += "," + data3['actors']
-        data4.append(data3['openDt'])
+        
         # data4 += "," + data3['audiAcc']
         # data5 = copy.deepcopy(data4)
         # data6.append(data5)
@@ -56,7 +56,10 @@ def moviedetail():
         data_genres = data3['genres']
         data_directors = data3['directors']
         data_actors = data3['actors']
-       
+        data_age = data3['audits']
+        
+        data4.append(data_age[0]['watchGradeNm'])
+#        ['watchGradeNm']
         # 장르 추출
         if len(data_genres) < 2:
             data4.append(data_genres[0]['genreNm'])
@@ -80,10 +83,13 @@ def moviedetail():
             for i in (0,len(data_actors)-1):
                 data8.append(data_actors[i]['peopleNm'])    
             data4.append(data8)
+      
         print()
         
     # print(data4)   
-      
+        detail.append(data4[1:7])
+        
+        data4.append(data3['openDt'])
     
     # print(data4)
         outfile = None
@@ -94,11 +100,11 @@ def moviedetail():
         outfile.close()
        
         
-        print("최종 데이터")
-        print("영화코드, 영문제목, 러닝타임, 개봉일, 장르, 감독, 주연")
+        print("상세 데이터")
+        print("영화코드, 영문제목, 러닝타임, 관람등급, 개봉일, 장르, 감독, 주연")
         print(data4)
       
-        
+    return detail
         # 최종결과 확인   
         # print(data4)
         

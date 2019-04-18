@@ -21,5 +21,10 @@ def codeList():
         codeList.append(a[i])
     
     openfile.close()
-
+    
+    print(codeList)
+    
     return codeList
+
+if __name__ == '__main__':
+    codeList()
