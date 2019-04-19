@@ -49,14 +49,8 @@ def total_info():
         rank = index+1
         title = title_list[index]
         singer = singer_list[index]
-        print(rank, "\t", title, "\t\t\t\t\t\t", singer)
+        print(rank, "\t", title, "\t", singer)
 
-# def page_info():
-#     
-# #     for i in range(1,11):
-#     global page
-#     
-#     
-#     total_info(company_names, now_price_list)
+
 
 total_info()
