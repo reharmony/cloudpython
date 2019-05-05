@@ -1,3 +1,8 @@
+'''
+Created on 2019. 5. 6.
+
+@author: jeong
+'''
 from tkinter import *
 from tkinter.ttk import *
 import tkinter
@@ -9,11 +14,16 @@ import random
 class Progress:
     progress = None
     thread = None
+    
 
     # 프로그래스바 생성자
-    def __init__(self, w):
+    def __init__(self, w, color):
+        # 프로그래스바 색상 설정
+        s = Style()
+        s.theme_use('clam')
+        s.configure("%s.Horizontal.TProgressbar" % color, troughcolor ='black', background=color) # 바 배경색 / 바 색
         # 프로그래스바 배치
-        self.progress = Progressbar(w, orient = HORIZONTAL, length = 500)
+        self.progress = Progressbar(w, style="%s.Horizontal.TProgressbar" % color, orient = HORIZONTAL, length = 500)
         self.progress.pack(side=TOP, fill = X, ipadx = 10, ipady = 10, padx=10, pady=10)
         # 스레드 설정
         self.thread = threading.Thread(target = self.progressArmy, args=(self.progress,))
@@ -31,10 +41,10 @@ class Progress:
 
 # 프로그래스바 배치
 def gotoArmy():
-    # 군인 3명
-    army1 = Progress(w)
-    army2 = Progress(w)
-    army3 = Progress(w)
+    # 군인 3명 (윈도우 명, 프로그래스바 색상)
+    army3 = Progress(w, 'blue')
+    army2 = Progress(w, 'yellow')
+    army1 = Progress(w, 'red')
 
 # 메인 코드
 if __name__ == '__main__':
